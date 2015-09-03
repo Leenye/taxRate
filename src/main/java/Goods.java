@@ -1,5 +1,4 @@
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 /**
  * Created by twer on 9/1/15.
@@ -8,6 +7,7 @@ public class Goods {
     private String name;
     private double  price;
     private double taxrate;
+    private double tax;
     private double cost;
     private String type;
 
@@ -40,7 +40,7 @@ public class Goods {
         this.cost = cost;
     }
 
-    public double getTaxRate(){
+    public double calculateTaxRate(){
         if (this.name.contains("imported")){
             if (this.name.contains("book") || this.name.contains("chocolate") || this.name.contains("pills")){
                 this.taxrate = 0.05;
@@ -57,16 +57,27 @@ public class Goods {
         return this.taxrate;
     }
 
-    public double getCost() {
-        double tax = 0;
-        double rawTax = this.price*this.getTaxRate();
+    public double calculateTax(){
+        double rawTax = this.price*this.calculateTaxRate();
         double i = Math.rint(rawTax*100);
         if (i%10 == 0 || i%10 == 5){
             tax =  i/100;
         }else {
-            tax = (i + 5*(i%10/5 + 1) - i%10%5)/100;
+            tax = (i + 5 - i%10%5)/100;
+        }
+        return tax;
+    }
+
+    public double getCost() {
+        double tax = 0;
+        double rawTax = this.price*this.calculateTaxRate();
+        double i = Math.rint(rawTax*100);
+        if (i%10 == 0 || i%10 == 5){
+            tax =  i/100;
+        }else {
+            tax = (i + 5 - i%10%5)/100;
         }
         this.cost =new BigDecimal(tax + this.price).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
-        return cost;
+        return this.cost;
     }
 }
