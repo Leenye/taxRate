@@ -10,7 +10,12 @@ public class Goods {
     private double tax;
     private double cost;
     private String type;
-    
+
+    private static double BASIC_TAX_RATE = 0.1;
+    private static double EXEMPT_TAX_RATE = 0.0;
+    private static double IMPORTED_BASIC_TAX_RATE = 0.15;
+    private static double IMPORTED_EXEMPT_TAX_RATE = 0.05;
+
 
     public Goods(){
     }
@@ -90,5 +95,4 @@ public class Goods {
         goods.setName(name);
         return goods;
     }
-
 }
