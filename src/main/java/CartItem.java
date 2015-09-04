@@ -4,21 +4,31 @@ import java.util.Map;
  * Created by twer on 9/1/15.
  */
 public class CartItem {
-    private Map<Goods,String> goodsMap;
-    private  double costs;
 
-    public Map<Goods, String> getGoodsMap() {
-        return goodsMap;
-    }
-    public double getCosts() {
-        return costs;
+    private Goods goods;
+    private int num;
+
+    public Goods getGoods() {
+        return goods;
     }
 
-    public void setGoodsMap(Map<Goods, String> goodsMap) {
-        this.goodsMap = goodsMap;
+    public int getNum() {
+        return num;
     }
 
-    public void setCosts(double costs) {
-        this.costs = costs;
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public CartItem(Goods goods,int num){
+        this.goods = goods;
+        this.num = num;
+    }
+
+    public CartItem() {
     }
 }

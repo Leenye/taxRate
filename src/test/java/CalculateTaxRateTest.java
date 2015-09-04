@@ -19,5 +19,4 @@ public class CalculateTaxRateTest {
         assertThat(book.calculateTaxRate(), is(0.0));
         assertThat(cd.calculateTaxRate(), is(0.1));
     }
-
 }

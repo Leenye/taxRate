@@ -17,7 +17,6 @@ public class GetCostTest {
         assertThat((book.getCost()), is(12.49));
         assertThat((musicCD.getCost()),is(16.49));
         assertThat((importedPerfum.getCost()),is(32.19));
-
     }
 
 }

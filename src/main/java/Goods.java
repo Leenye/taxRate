@@ -5,11 +5,15 @@ import java.math.BigDecimal;
  */
 public class Goods {
     private String name;
-    private double  price;
+    private double price;
     private double taxrate;
     private double tax;
     private double cost;
     private String type;
+    
+
+    public Goods(){
+    }
 
     public Goods(String name, double price) {
         this.name = name;
@@ -41,20 +45,20 @@ public class Goods {
     }
 
     public double calculateTaxRate(){
-        if (this.name.contains("imported")){
-            if (this.name.contains("book") || this.name.contains("chocolate") || this.name.contains("pills")){
-                this.taxrate = 0.05;
+        if (name.contains("imported")){
+            if (name.contains("book") || name.contains("chocolate") || name.contains("pills")){
+                taxrate = 0.05;
             }else {
-                this.taxrate = 0.15;
+                taxrate = 0.15;
             }
         }else {
             if (name.contains("book") || name.contains("chocolate") || name.contains("pills")){
-                this.taxrate = 0.0;
+                taxrate = 0.0;
             }else {
-                this.taxrate = 0.1;
+                taxrate = 0.1;
             }
         }
-        return this.taxrate;
+        return taxrate;
     }
 
     public double calculateTax(){
@@ -77,7 +81,14 @@ public class Goods {
         }else {
             tax = (i + 5 - i%10%5)/100;
         }
-        this.cost =new BigDecimal(tax + this.price).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
-        return this.cost;
+        cost =new BigDecimal(tax + price).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+        return cost;
     }
+
+    public Goods getGoodsByName(String name){
+        Goods goods = new Goods();
+        goods.setName(name);
+        return goods;
+    }
+
 }
