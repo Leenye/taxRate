@@ -24,7 +24,7 @@ public class CartItemParser {
             cartItem.setNum(numuber);
             return cartItem;
         }else {
-            return null;
+            throw new IllegalArgumentException("Illegal item input");
         }
     }
 }
