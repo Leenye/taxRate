@@ -10,22 +10,18 @@ import static org.junit.Assert.assertThat;
  */
 public class CalculateTaxTest {
 
-    private Goods book;
-    private Goods musicCD;
-    private Goods importedPerfum;
+    private Calculator calculator;
 
     @Before
-    public void setUp() throws Exception {
-        book = new Goods("book", 12.49);
-        musicCD = new Goods("music CD", 14.99);
-        importedPerfum = new Goods("imported perfum", 27.99);
+    public void setUp() throws Exception{
+        calculator = new Calculator();
     }
 
     @Test
     public void testCalculatTax() {
-        assertThat(book.calculateTax(), is(0.0));
-        assertThat(musicCD.calculateTax(), is(1.5));
-        assertThat(importedPerfum.calculateTax(), is(4.2));
+        assertThat(calculator.calculateTax( 12.49,"book"), is(0.0));
+        assertThat(calculator.calculateTax( 14.99,"music CD"), is(1.5));
+        assertThat(calculator.calculateTax( 27.99,"imported perfum"), is(4.2));
     }
 
     @After

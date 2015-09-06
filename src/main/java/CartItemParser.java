@@ -15,13 +15,12 @@ public class CartItemParser {
 
             String name = matcher.group("name");
             Double price = Double.parseDouble(matcher.group("price"));
-            Goods goods = new Goods(name, price);
-            goods.calculateTaxRate();
+            Product product = new Product(name, price);
             String num = matcher.group("num");
 
-            cartItem.setGoods(goods);
-            int numuber = Integer.parseInt(num);
-            cartItem.setNum(numuber);
+            cartItem.setProduct(product);
+            int number = Integer.parseInt(num);
+            cartItem.setNum(number);
             return cartItem;
         }else {
             throw new IllegalArgumentException("Illegal item input");

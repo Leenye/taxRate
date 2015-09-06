@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
@@ -8,11 +7,11 @@ import java.util.*;
  */
 public class ArrayListContentReader implements ContentReader {
 
-    public ArrayList<Container> readContent(BufferedReader reader) {
-        ArrayList<Container> containers = new ArrayList<Container>();
+    public ArrayList<Cart> readContent(BufferedReader reader) {
+        ArrayList<Cart> containers = new ArrayList<Cart>();
         CartItemParser cartItemParser = new CartItemParser();
         String line = null;
-        Container container = null;
+        Cart container = null;
         boolean isContainerCreated = false;
         while (true) {
             try {
@@ -30,7 +29,7 @@ public class ArrayListContentReader implements ContentReader {
                     if (isContainerCreated) {
                         containers.add(container);
                     }
-                    container = new Container();
+                    container = new Cart();
                     container.setKey(line);
                     isContainerCreated = true;
                 } else {
