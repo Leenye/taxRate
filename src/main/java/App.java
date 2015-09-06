@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,8 +12,9 @@ import java.util.regex.Pattern;
 public class App {
 
     public static void main(String[] args) throws IOException {
+        String filePath = "src/main/resources/file.txt";
         TxtReaderHelper helper = new TxtReaderHelper();
-        ArrayList<Container> containers = helper.readText();
+        List<Container> containers = helper.readText(filePath);
 
         for (Container container : containers) {
             container.printResults();
