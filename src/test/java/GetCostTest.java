@@ -8,9 +8,9 @@ import static org.junit.Assert.assertThat;
  */
 public class GetCostTest {
 
-    private Goods book = new Goods("book",12.49);
-    private Goods musicCD = new Goods("music CD",14.99);
-    private Goods importedPerfum = new Goods("imported perfum",27.99);
+    private Product book = new Product("book",12.49);
+    private Product musicCD = new Product("music CD",14.99);
+    private Product importedPerfum = new Product("imported perfum",27.99);
 
     @Test
     public void testGetCost(){
@@ -18,5 +18,4 @@ public class GetCostTest {
         assertThat((musicCD.getCost()),is(16.49));
         assertThat((importedPerfum.getCost()),is(32.19));
     }
-
 }

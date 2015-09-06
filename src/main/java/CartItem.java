@@ -1,31 +1,29 @@
-import java.util.Map;
-
 /**
  * Created by twer on 9/1/15.
  */
 public class CartItem {
 
-    private Goods goods;
+    private Product product;
     private int num;
 
-    public Goods getGoods() {
-        return goods;
+    public Product getProduct() {
+        return product;
     }
 
     public int getNum() {
         return num;
     }
 
-    public void setGoods(Goods goods) {
-        this.goods = goods;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public void setNum(int num) {
         this.num = num;
     }
 
-    public CartItem(Goods goods,int num){
-        this.goods = goods;
+    public CartItem(Product goods,int num){
+        this.product = goods;
         this.num = num;
     }
 
