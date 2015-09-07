@@ -1,3 +1,5 @@
+package com.homework.shoppingCart.helper;
+
 import java.util.ArrayList;
 
 /**
@@ -40,8 +42,8 @@ public class Calculator {
         return taxrate;
     }
 
-//    public double calculateTotal(ArrayList<CartItem> arrayList){
-//        for (CartItem i: arrayList){
+//    public double calculateTotal(ArrayList<com.homework.shoppingCart.CartItem> arrayList){
+//        for (com.homework.shoppingCart.CartItem i: arrayList){
 //
 //        }
 //    }

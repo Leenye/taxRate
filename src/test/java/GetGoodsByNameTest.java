@@ -1,4 +1,4 @@
-import org.junit.Test;
+import com.homework.shoppingCart.Product;
 
 /**
  * Created by twer on 9/4/15.
@@ -8,6 +8,6 @@ public class GetGoodsByNameTest {
 
 //    @Test
 //    public void testGetGoodsByName(){
-//       Product goods = importedFood.getProductByName("imported chocolate");
+//       com.homework.shoppingCart.Product goods = importedFood.getProductByName("imported chocolate");
 //    }
 }

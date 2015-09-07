@@ -1,3 +1,7 @@
+package com.homework.shoppingCart;
+
+import com.homework.shoppingCart.Product;
+
 /**
  * Created by twer on 9/1/15.
  */

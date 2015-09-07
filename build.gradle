@@ -20,6 +20,6 @@ task createDirectories (group: taskGroup){
 }
 
 task run(type: JavaExec, group: taskGroup){
-    main = 'App'
+    main = 'com.homework.shoppingCart.App'
     classpath = configurations.compile + sourceSets.main.output
 }

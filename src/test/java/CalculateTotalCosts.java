@@ -1,3 +1,6 @@
+import com.homework.shoppingCart.CartItem;
+import com.homework.shoppingCart.Product;
+
 import java.util.ArrayList;
 
 /**
@@ -14,7 +17,7 @@ public class CalculateTotalCosts {
 //    cartItemArdd(cartItem1);
 //
 //
-//    private Cart container = new Cart(A,"1");
+//    private com.homework.shoppingCart.Cart container = new com.homework.shoppingCart.Cart(A,"1");
 
 
 }

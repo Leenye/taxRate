@@ -1,3 +1,6 @@
+import com.homework.shoppingCart.CartItem;
+import com.homework.shoppingCart.helper.CartItemParser;
+import com.homework.shoppingCart.Product;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

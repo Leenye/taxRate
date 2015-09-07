@@ -1,3 +1,4 @@
+import com.homework.shoppingCart.Product;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

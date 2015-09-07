@@ -1,3 +1,8 @@
+package com.homework.shoppingCart.helper;
+
+import com.homework.shoppingCart.CartItem;
+import com.homework.shoppingCart.Product;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
