@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.homework.shoppingCart.CartTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2015-09-19T15:17:31" hostname="bogon" time="0.001">
+  <properties/>
+  <testcase name="testSetProductDate" classname="com.homework.shoppingCart.CartTest" time="0.0"/>
+  <testcase name="testCalculateTotalTaxes" classname="com.homework.shoppingCart.CartTest" time="0.001"/>
+  <testcase name="testCalculteTotalCosts" classname="com.homework.shoppingCart.CartTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
