@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="CalculateTaxTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-06T16:27:08" hostname="bogon" time="0.001">
+=======
+<testsuite name="CalculateTaxTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-10T16:12:16" hostname="bogon" time="0.0">
+>>>>>>> extract tax calculator
   <properties/>
-  <testcase name="testCalculatTax" classname="CalculateTaxTest" time="0.001"/>
+  <testcase name="testCalculatTax" classname="CalculateTaxTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

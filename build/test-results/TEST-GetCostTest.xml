@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="GetCostTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-06T16:27:08" hostname="bogon" time="0.002">
+=======
+<testsuite name="GetCostTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2015-09-10T16:12:16" hostname="bogon" time="0.002">
+>>>>>>> extract tax calculator
   <properties/>
   <testcase name="testGetCost" classname="GetCostTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
