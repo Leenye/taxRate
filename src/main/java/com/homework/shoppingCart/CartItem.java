@@ -2,11 +2,12 @@ package com.homework.shoppingCart;
 
 import com.homework.shoppingCart.Product;
 
+import java.util.Map;
+
 /**
  * Created by twer on 9/1/15.
  */
 public class CartItem {
-
     private Product product;
     private int num;
 

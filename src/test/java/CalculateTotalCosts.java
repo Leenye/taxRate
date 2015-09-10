@@ -13,7 +13,7 @@ public class CalculateTotalCosts {
     private CartItem cartItem1 = new CartItem(goods1,1);
     private CartItem cartItem2 = new CartItem(goods2,1);
 
-    private ArrayList<CartItem> cartItemArrayList = new ArrayList<CartItem>();
+//    private ArrayList<CartItem> cartItemArrayList = new ArrayList<CartItem>();
 //    cartItemArdd(cartItem1);
 //
 //

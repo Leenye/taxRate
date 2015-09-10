@@ -14,6 +14,7 @@ public class Product {
     private double cost;
     private String type;
 
+
     private Calculator calculator = new Calculator();
 
     public Product(){

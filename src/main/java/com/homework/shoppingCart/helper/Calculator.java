@@ -1,7 +1,5 @@
 package com.homework.shoppingCart.helper;
 
-import java.util.ArrayList;
-
 /**
  * Created by twer on 9/6/15.
  */
@@ -12,8 +10,44 @@ public class Calculator {
     private static double IMPORTED_BASIC_TAX_RATE = 0.15;
     private static double IMPORTED_EXEMPT_TAX_RATE = 0.05;
 
-    private double taxrate;
+    private double taxRate;
     private double tax;
+
+    private boolean isImported;
+    private boolean isExempt;
+
+    public boolean isImported(String name){
+        boolean importedFlag = false;
+        if (name.contains("imported")){
+            importedFlag = true;
+        }
+        return importedFlag;
+    }
+
+    public boolean isExempt(String name){
+        boolean ExemptFlag = false;
+        if (name.contains("book") || name.contains("chocolate") || name.contains("pills")){
+            ExemptFlag = true;
+        }
+        return ExemptFlag;
+    }
+
+    public double calculateTaxRate(String name){
+        if (isImported(name)){
+            double taxRate = 0.15;
+            if(isExempt(name)){
+                taxRate = 0.05;
+            }
+            return taxRate;
+        }else{
+            double taxRate = 0.1;
+            if(isExempt(name)){
+                taxRate = 0.0;
+            }
+            return taxRate;
+        }
+    }
+
     public double calculateTax(double price,String name){
         double rawTax = price*calculateTaxRate(name);
         double i = Math.rint(rawTax*100);
@@ -24,27 +58,4 @@ public class Calculator {
         }
         return tax;
     }
-
-    public double calculateTaxRate(String name){
-        if (name.contains("imported")){
-            if (name.contains("book") || name.contains("chocolate") || name.contains("pills")){
-                taxrate = 0.05;
-            }else {
-                taxrate = 0.15;
-            }
-        }else {
-            if (name.contains("book") || name.contains("chocolate") || name.contains("pills")){
-                taxrate = 0.0;
-            }else {
-                taxrate = 0.1;
-            }
-        }
-        return taxrate;
-    }
-
-//    public double calculateTotal(ArrayList<com.homework.shoppingCart.CartItem> arrayList){
-//        for (com.homework.shoppingCart.CartItem i: arrayList){
-//
-//        }
-//    }
 }
