@@ -10,12 +10,10 @@ import java.math.BigDecimal;
 public class Product {
     private String name;
     private double price;
-    private double tax;
     private double cost;
     private String type;
 
-
-    private Calculator calculator = new Calculator();
+    private TaxRate taxRate = new TaxRate();
 
     public Product(){
     }
@@ -49,14 +47,18 @@ public class Product {
         this.cost = cost;
     }
 
-    public double getTax() {
-        double tax = calculator.calculateTax(price, name);
-        return this.tax=tax;
+    public double getTaxRate(){
+      return  taxRate.calculateTaxRate(name);
     }
 
+    public double getTax(){
+        double tax = Calculator.calculateTax(price,taxRate.calculateTaxRate(name));
+        return new BigDecimal(tax).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
+
     public double getCost() {
-        double tax = calculator.calculateTax(price, name);
-        cost =new BigDecimal(tax + price).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+        cost =new BigDecimal(this.getTax() + price).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
         return this.cost;
     }
 }

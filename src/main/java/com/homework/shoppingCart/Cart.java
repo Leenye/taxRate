@@ -2,13 +2,13 @@ package com.homework.shoppingCart;
 
 import com.homework.shoppingCart.CartItem;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
  * Created by twer on 9/4/15.
  */
 public class Cart {
-
     private double totalCosts = 0;
     private double totalTaxes = 0;
     private String key;
@@ -50,14 +50,14 @@ public class Cart {
         for(CartItem i : cartItemArrayList){
             totalCosts += i.getProduct().getCost()*i.getNum();
         }
-        return totalCosts;
+        return new BigDecimal(totalCosts).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue() ;
     }
 
     public double calculateTotalTaxes(){
         for(CartItem i : cartItemArrayList){
             totalTaxes += i.getProduct().getTax()*i.getNum();
         }
-        return totalTaxes;
+        return new BigDecimal(totalTaxes).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
     public void printResults(){

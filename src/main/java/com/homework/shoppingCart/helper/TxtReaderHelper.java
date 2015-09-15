@@ -14,7 +14,7 @@ public class TxtReaderHelper {
         File file = new File(filePath);
         BufferedReader reader = new BufferedReader(new FileReader(file));
 
-        ContentReader contentReader = new ArrayListContentReader();
+        ContentReader contentReader = new ContentReader();
 
         if (reader.readLine().equals("INPUT")) {
             List<Cart> containers =  contentReader.readContent(reader);
