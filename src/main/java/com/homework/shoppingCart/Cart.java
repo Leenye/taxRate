@@ -19,7 +19,6 @@ public class Cart {
         return cartItemList;
     }
 
-
     public void setCartItemList(ArrayList<CartItem> cartItemList) {
         this.cartItemList = cartItemList;
     }
@@ -38,17 +37,6 @@ public class Cart {
 
     public double getTotalTaxes() {
         return Calculator.calculateTotalTax(cartItemList);
-    }
-
-    public void printResults(){
-//        System.out.println(key);
-        for (CartItem i : cartItemList){
-            System.out.println(i.getNum()+i.getProduct().getName()+": "+i.getProduct().getCost());
-        }
-        totalTaxes = this.getTotalTaxes();
-        totalCosts = this.getTotalCosts();
-        System.out.format("sales Taxes: %.2f%n", totalTaxes);
-        System.out.format("Total: %.2f%n",totalCosts);
     }
 
     public void add(CartItem cartItem) {

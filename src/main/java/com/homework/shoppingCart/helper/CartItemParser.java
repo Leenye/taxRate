@@ -16,13 +16,15 @@ public class CartItemParser {
         Matcher matcher = pattern.matcher(item);
 
         if (matcher.find()) {
-            CartItem cartItem = new CartItem();
-
             String name = matcher.group("name");
             Double price = Double.parseDouble(matcher.group("price"));
             Product product = new Product(name, price);
-            String num = matcher.group("num");
+            if (name.contains("imported")){
+                product.setIsImported(true);
+            }
 
+            CartItem cartItem = new CartItem();
+            String num = matcher.group("num");
             cartItem.setProduct(product);
             int number = Integer.parseInt(num);
             cartItem.setNum(number);

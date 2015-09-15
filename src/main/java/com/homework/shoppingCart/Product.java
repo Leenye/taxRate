@@ -1,6 +1,8 @@
 package com.homework.shoppingCart;
 
 import com.homework.shoppingCart.helper.Calculator;
+import com.homework.shoppingCart.helper.ProductType;
+import com.homework.shoppingCart.helper.ProductTypeHelper;
 
 import java.math.BigDecimal;
 
@@ -11,8 +13,8 @@ public class Product {
     private String name;
     private double price;
     private double cost;
-
-    private TaxRate taxRate = new TaxRate();
+    private ProductType productType;
+    private boolean isImported;
 
     public Product(){
     }
@@ -20,6 +22,22 @@ public class Product {
     public Product(String name, double price) {
         this.name = name;
         this.price = price;
+    }
+
+    public boolean isImported() {
+        return isImported;
+    }
+
+    public void setIsImported(boolean isImported) {
+        this.isImported = isImported;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
+
+    public ProductType getProductType(){
+        return ProductTypeHelper.getProductType(name);
     }
 
     public String getName() {
@@ -43,11 +61,11 @@ public class Product {
     }
 
     public double getTaxRate(){
-      return  taxRate.calculateTaxRate(name);
+      return  Calculator.calculateTaxRate(this);
     }
 
     public double getTax(){
-        double tax = Calculator.calculateTax(price,taxRate.calculateTaxRate(name));
+        double tax = Calculator.calculateTax(this);
         return new BigDecimal(tax).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 

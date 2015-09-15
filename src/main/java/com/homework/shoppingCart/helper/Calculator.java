@@ -1,6 +1,7 @@
 package com.homework.shoppingCart.helper;
 
 import com.homework.shoppingCart.CartItem;
+import com.homework.shoppingCart.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,9 +10,19 @@ import java.util.List;
  * Created by twer on 9/6/15.
  */
 public class Calculator {
-    public static double calculateTax(double price,double taxRate){
+    private static final double IMPORTED_ADDITION = 0.05;
+
+    public static double calculateTaxRate(Product product){
+        double taxRate = product.getProductType().getTaxRate();
+        if (product.isImported()){
+            taxRate += IMPORTED_ADDITION;
+        }
+        return taxRate;
+    }
+
+    public static double calculateTax(Product product){
         double tax;
-        double rawTax = price*taxRate;
+        double rawTax = product.getPrice()*product.getTaxRate();
         double i = Math.rint(rawTax*100);
         if (i%10 == 0 || i%10 == 5){
             tax =  i/100;
