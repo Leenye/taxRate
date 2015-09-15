@@ -1,9 +1,10 @@
 package com.homework.shoppingCart;
 
-import com.homework.shoppingCart.CartItem;
+import com.homework.shoppingCart.helper.Calculator;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by twer on 9/4/15.
@@ -11,31 +12,16 @@ import java.util.ArrayList;
 public class Cart {
     private double totalCosts = 0;
     private double totalTaxes = 0;
-    private String key;
-    private ArrayList<CartItem> cartItemArrayList = new ArrayList<CartItem>();
+    private List<CartItem> cartItemList = new ArrayList<CartItem>();
 
-    public String getKey() {
-        return key;
+
+    public List<CartItem> getCartItemList() {
+        return cartItemList;
     }
 
-    public ArrayList<CartItem> getCartItemArrayList() {
-        return cartItemArrayList;
-    }
 
-    public double getTotalCosts() {
-        return totalCosts;
-    }
-
-    public double getTotalTaxes() {
-        return totalTaxes;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public void setCartItemArrayList(ArrayList<CartItem> cartItemArrayList) {
-        this.cartItemArrayList = cartItemArrayList;
+    public void setCartItemList(ArrayList<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
     }
 
     public void setTotalCosts(double totalCosts) {
@@ -46,32 +32,26 @@ public class Cart {
         this.totalTaxes = totalTaxes;
     }
 
-    public double calculateTotalCosts(){
-        for(CartItem i : cartItemArrayList){
-            totalCosts += i.getProduct().getCost()*i.getNum();
-        }
-        return new BigDecimal(totalCosts).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue() ;
+    public double getTotalCosts() {
+        return Calculator.calculateTotalCost(cartItemList);
     }
 
-    public double calculateTotalTaxes(){
-        for(CartItem i : cartItemArrayList){
-            totalTaxes += i.getProduct().getTax()*i.getNum();
-        }
-        return new BigDecimal(totalTaxes).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+    public double getTotalTaxes() {
+        return Calculator.calculateTotalTax(cartItemList);
     }
 
     public void printResults(){
-        System.out.println(key);
-        for (CartItem i : cartItemArrayList){
+//        System.out.println(key);
+        for (CartItem i : cartItemList){
             System.out.println(i.getNum()+i.getProduct().getName()+": "+i.getProduct().getCost());
         }
-        totalTaxes = this.calculateTotalTaxes();
-        totalCosts = this.calculateTotalCosts();
+        totalTaxes = this.getTotalTaxes();
+        totalCosts = this.getTotalCosts();
         System.out.format("sales Taxes: %.2f%n", totalTaxes);
         System.out.format("Total: %.2f%n",totalCosts);
     }
 
     public void add(CartItem cartItem) {
-        cartItemArrayList.add(cartItem);
+        cartItemList.add(cartItem);
     }
 }

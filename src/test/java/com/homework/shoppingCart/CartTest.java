@@ -28,10 +28,10 @@ public class CartTest extends TestCase {
 
     @Test
     public void testCalculateTotalTaxes(){
-        assertThat(cart.calculateTotalTaxes(), is(1.50));
+        assertThat(cart.getTotalTaxes(), is(1.50));
     }
 
     public void testCalculteTotalCosts(){
-        assertThat(cart.calculateTotalCosts(),is(28.98));
+        assertThat(cart.getTotalCosts(),is(28.98));
     }
 }

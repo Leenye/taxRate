@@ -11,7 +11,6 @@ public class Product {
     private String name;
     private double price;
     private double cost;
-    private String type;
 
     private TaxRate taxRate = new TaxRate();
 
@@ -29,10 +28,6 @@ public class Product {
 
     public double getPrice() {
         return price;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public void setName(String name) {
@@ -55,7 +50,6 @@ public class Product {
         double tax = Calculator.calculateTax(price,taxRate.calculateTaxRate(name));
         return new BigDecimal(tax).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
     }
-
 
     public double getCost() {
         cost =new BigDecimal(this.getTax() + price).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();

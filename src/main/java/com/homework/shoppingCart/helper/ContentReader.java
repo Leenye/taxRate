@@ -34,7 +34,7 @@ public class ContentReader {
                         containers.add(container);
                     }
                     container = new Cart();
-                    container.setKey(line);
+//                    container.setKey(line);
                     isContainerCreated = true;
                 } else {
                     container.add(cartItemParser.parseItem(line));

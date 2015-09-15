@@ -39,7 +39,4 @@ public class TaxRate {
         }
         return new BigDecimal(taxRate).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
     }
-
-
-
 }
