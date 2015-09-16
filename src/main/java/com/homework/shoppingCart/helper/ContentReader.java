@@ -12,10 +12,10 @@ import java.util.*;
 public class ContentReader {
 
     public ArrayList<Cart> readContent(BufferedReader reader) {
-        ArrayList<Cart> containers = new ArrayList<Cart>();
+        ArrayList<Cart> carts = new ArrayList<Cart>();
         CartItemParser cartItemParser = new CartItemParser();
         String line = null;
-        Cart container = null;
+        Cart cart = null;
         boolean isContainerCreated = false;
         while (true) {
             try {
@@ -25,19 +25,19 @@ public class ContentReader {
             }
             if (line == null) {
                 if (isContainerCreated) {
-                    containers.add(container);
+                    carts.add(cart);
                 }
-                return containers;
+                return carts;
             } else {
                 if (line.contains("Input")) {
                     if (isContainerCreated) {
-                        containers.add(container);
+                        carts.add(cart);
                     }
-                    container = new Cart();
-//                    container.setKey(line);
+                    cart = new Cart();
+//                    cart.setKey(line);
                     isContainerCreated = true;
                 } else {
-                    container.add(cartItemParser.parseItem(line));
+                    cart.add(cartItemParser.parseItem(line));
                 }
             }
         }
