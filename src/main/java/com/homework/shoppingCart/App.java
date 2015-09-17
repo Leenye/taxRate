@@ -1,12 +1,9 @@
 package com.homework.shoppingCart;
 
-import com.homework.shoppingCart.helper.TxtReaderHelper;
+import com.homework.shoppingCart.parse.CartParser;
 
 import java.io.*;
-import java.util.Currency;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by twer on 9/1/15.
@@ -14,8 +11,8 @@ import java.util.regex.Pattern;
 public class App {
     public static void main(String[] args) throws IOException {
         String filePath = "src/main/resources/file.txt";
-        TxtReaderHelper helper = new TxtReaderHelper();
-        List<Cart> carts = helper.readText(filePath);
+        CartParser paser = new CartParser();
+        List<Cart> carts = paser.parse(filePath);
 
         for (Cart cart :carts){
            for (CartItem i : cart.getCartItemList()){

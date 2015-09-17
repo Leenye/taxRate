@@ -1,4 +1,4 @@
-package com.homework.shoppingCart.helper;
+package com.homework.shoppingCart.parse;
 
 import com.homework.shoppingCart.CartItem;
 import com.homework.shoppingCart.Product;
@@ -6,12 +6,8 @@ import com.homework.shoppingCart.Product;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by twer on 9/4/15.
- */
-public class CartItemParser {
-
-    public CartItem parseItem(String item){
+class CartItemParser {
+    public CartItem parseItem(String item) {
         Pattern pattern = Pattern.compile("(?<num>\\d)+(?<name>(\\s\\w*)+)\\sat\\s(?<price>.*)");
         Matcher matcher = pattern.matcher(item);
 
@@ -19,7 +15,7 @@ public class CartItemParser {
             String name = matcher.group("name");
             Double price = Double.parseDouble(matcher.group("price"));
             Product product = new Product(name, price);
-            if (name.contains("imported")){
+            if (name.contains("imported")) {
                 product.setIsImported(true);
             }
 
@@ -29,7 +25,7 @@ public class CartItemParser {
             int number = Integer.parseInt(num);
             cartItem.setNum(number);
             return cartItem;
-        }else {
+        } else {
             throw new IllegalArgumentException("Illegal item input");
         }
     }
