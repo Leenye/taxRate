@@ -6,40 +6,32 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
 
-/**
- * Created by twer on 9/6/15.
- */
 public class ContentReader {
 
-    public ArrayList<Cart> readContent(BufferedReader reader) {
+    public ArrayList<Cart> readContent(BufferedReader reader) throws IOException {
         ArrayList<Cart> carts = new ArrayList<Cart>();
         CartItemParser cartItemParser = new CartItemParser();
-        String line = null;
         Cart cart = null;
-        boolean isContainerCreated = false;
-        while (true) {
-            try {
-                line = reader.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (line == null) {
-                if (isContainerCreated) {
-                    carts.add(cart);
-                }
-                return carts;
+
+        List<String> content = readAllLines(reader);
+        for (String line : content) {
+            if (line.contains("Input")) {
+                cart = new Cart();
+                carts.add(cart);
             } else {
-                if (line.contains("Input")) {
-                    if (isContainerCreated) {
-                        carts.add(cart);
-                    }
-                    cart = new Cart();
-//                    cart.setKey(line);
-                    isContainerCreated = true;
-                } else {
-                    cart.add(cartItemParser.parseItem(line));
-                }
+                cart.add(cartItemParser.parseItem(line));
             }
         }
+        return carts;
+    }
+
+    private static List<String> readAllLines(BufferedReader reader) throws IOException {
+        List<String> content = new ArrayList<String>();
+        String line = reader.readLine();
+        while (line != null) {
+            content.add(line);
+            line = reader.readLine();
+        }
+        return content;
     }
 }

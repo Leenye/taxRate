@@ -1,5 +1,7 @@
 package com.homework.shoppingCart.helper;
 
+import com.homework.shoppingCart.ProductType;
+
 /**
  * Created by twer on 9/16/15.
  */

@@ -1,4 +1,4 @@
-package com.homework.shoppingCart.helper;
+package com.homework.shoppingCart;
 
 /**
  * Created by twer on 9/15/15.

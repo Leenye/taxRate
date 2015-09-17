@@ -1,14 +1,12 @@
-package com.homework.shoppingCart.helper;
+package com.homework.shoppingCart;
 
 import com.homework.shoppingCart.CartItem;
 import com.homework.shoppingCart.Product;
+import com.homework.shoppingCart.helper.MoneyHelper;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * Created by twer on 9/6/15.
- */
 public class Calculator {
     private static final double IMPORTED_ADDITION = 0.05;
 
@@ -21,15 +19,7 @@ public class Calculator {
     }
 
     public static double calculateTax(Product product){
-        double tax;
-        double rawTax = product.getPrice()*product.getTaxRate();
-        double i = Math.rint(rawTax*100);
-        if (i%10 == 0 || i%10 == 5){
-            tax =  i/100;
-        }else {
-            tax = (i + 5 - i%10%5)/100;
-        }
-        return tax;
+        return MoneyHelper.round(product.getPrice() * product.getTaxRate());
     }
 
     public static double calculateTotalCost(List<CartItem> cartItems){
