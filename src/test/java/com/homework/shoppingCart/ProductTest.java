@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by twer on 9/11/15.
  */
-public class ProductTest extends TestCase {
+public class ProductTest {
     Product product1;
     Product product2;
     Product product3;
