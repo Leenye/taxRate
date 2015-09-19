@@ -1,4 +1,5 @@
 INPUT
+Date: 2015-09-17
 Input 1:
 1 book at 12.49
 1 music CD at 14.99

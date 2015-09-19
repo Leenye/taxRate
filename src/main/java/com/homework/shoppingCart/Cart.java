@@ -3,14 +3,19 @@ package com.homework.shoppingCart;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by twer on 9/4/15.
- */
 public class Cart {
-    private double totalCosts = 0;
-    private double totalTaxes = 0;
+    private double totalCosts;
+    private double totalTaxes;
+    private String date;
     private List<CartItem> cartItemList = new ArrayList<CartItem>();
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public List<CartItem> getCartItemList() {
         return cartItemList;
@@ -38,5 +43,11 @@ public class Cart {
 
     public void add(CartItem cartItem) {
         cartItemList.add(cartItem);
+    }
+
+    public void setProductDate(){
+        for (CartItem cartItem : cartItemList){
+            cartItem.getProduct().setDate(date);
+        }
     }
 }

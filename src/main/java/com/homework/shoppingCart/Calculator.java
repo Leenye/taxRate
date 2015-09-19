@@ -8,16 +8,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class Calculator {
-    private static final double IMPORTED_ADDITION = 0.05;
-
-    public static double calculateTaxRate(Product product){
-        double taxRate = product.getProductType().getTaxRate();
-        if (product.isImported()){
-            taxRate += IMPORTED_ADDITION;
-        }
-        return taxRate;
-    }
-
     public static double calculateTax(Product product){
         return MoneyHelper.round(product.getPrice() * product.getTaxRate());
     }

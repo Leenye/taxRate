@@ -51,13 +51,13 @@ public class CalculatorTest extends TestCase {
         assertThat(calculator.calculateTax(importedPerfum),is(4.20));
     }
 
-    @Test
-    public void testCalculateTaxRate() throws Exception {
-        assertThat(calculator.calculateTaxRate(book),is(0.00));
-        assertThat(calculator.calculateTaxRate(musicCD),is(0.10));
-        assertThat(calculator.calculateTaxRate(importedChocolate),is(0.50));
-        assertThat(calculator.calculateTaxRate(importedPerfum),is(1.50));
-    }
+//    @Test
+//    public void testCalculateTaxRate() throws Exception {
+//        assertThat(calculator.calculateTaxRate(book),is(0.00));
+//        assertThat(calculator.calculateTaxRate(musicCD),is(0.10));
+//        assertThat(calculator.calculateTaxRate(importedChocolate),is(0.50));
+//        assertThat(calculator.calculateTaxRate(importedPerfum),is(1.50));
+//    }
 
     @Test
     public void testCalculateTotalCost() throws Exception {

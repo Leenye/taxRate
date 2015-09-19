@@ -1,25 +1,35 @@
 package com.homework.shoppingCart;
 
-import com.homework.shoppingCart.helper.ProductTypeHelper;
-
 import java.math.BigDecimal;
 
-/**
- * Created by twer on 9/1/15.
- */
 public class Product {
     private String name;
     private double price;
     private double cost;
-    private ProductType productType;
     private boolean isImported;
-
-    public Product(){
-    }
+    private boolean isBasicExempt;
+    private String date;
+//    private TaxRate taxRate;
 
     public Product(String name, double price) {
         this.name = name;
         this.price = price;
+    }
+
+    public boolean isBasicExempt() {
+        return isBasicExempt;
+    }
+
+    public void setIsBasicExempt(boolean isBasicExempt) {
+        this.isBasicExempt = isBasicExempt;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public boolean isImported() {
@@ -28,14 +38,6 @@ public class Product {
 
     public void setIsImported(boolean isImported) {
         this.isImported = isImported;
-    }
-
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
-    }
-
-    public ProductType getProductType(){
-        return ProductTypeHelper.getProductType(name);
     }
 
     public String getName() {
@@ -59,7 +61,7 @@ public class Product {
     }
 
     public double getTaxRate(){
-      return  Calculator.calculateTaxRate(this);
+      return  TaxRate.calculateTaxRate(this);
     }
 
     public double getTax(){
