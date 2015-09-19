@@ -12,50 +12,54 @@ import static org.junit.Assert.assertThat;
  * Created by twer on 9/11/15.
  */
 public class ProductTest extends TestCase {
-    Product book;
-    Product musicCD;
-    Product importedPerfum;
-    Product importedChocolate;
+    Product product1;
+    Product product2;
+    Product product3;
+    Product product4;
+    Product product5;
+    Product product6;
 
     @Before
     public void setUp(){
-        book = new Product("book",12.49);
-        musicCD = new Product("music CD",14.99);
-        importedPerfum = new Product("imported perfum",27.99);
-        importedChocolate = new Product("imported chocolate",10.00);
-        importedChocolate.setDate("Mon. 2015-9-18");
-        musicCD.setDate("Wen. 2015-9-18");
-        importedChocolate.setDate("Fri. 2015-9-18");
+        product1 = new Product("book",12.49,"Date: Wen. 2015-9-18",false,true);
+        product2 = new Product("imported book",12.49,"Date: Wen. 2015-9-18",true,true);
+        product3 = new Product("perfume",12.49,"Date: Wen. 2015-9-18",false,false);
+        product4 = new Product("imported perfume",12.49,"Date: Wen. 2015-9-18",true,false);
+        product5 = new Product("imported perfume",12.49,"Date: Tue. 2015-9-18",true,false);
+        product6 = new Product("imported book",12.49,"Date: Thu. 2015-9-18",true,true);
     }
 
     @Test
     public void testGetCost(){
-        assertThat((book.getCost()), is(12.49));
-        assertThat((musicCD.getCost()),is(16.49));
-        assertThat((importedPerfum.getCost()),is(32.19));
-        assertThat(importedChocolate.getCost(),is(10.50));
+        assertThat((product1.getCost()), is(12.49));
+        assertThat((product2.getCost()), is(12.84));
+        assertThat((product3.getCost()), is(13.74));
+        assertThat((product4.getCost()), is(14.09));
+        assertThat((product5.getCost()), is(14.39));
+        assertThat((product6.getCost()), is(13.14));
     }
 
     @Test
     public void testGetTax(){
-        assertThat((book.getTax()), is(0.00));
-        assertThat((musicCD.getTax()), is(1.50));
-        assertThat((importedPerfum.getTax()),is(4.20));
-        assertThat(importedChocolate.getTax(),is(0.50));
+        assertThat((product1.getTax()), is(0.00));
+        assertThat((product2.getTax()), is(0.35));
+        assertThat((product3.getTax()), is(1.25));
+        assertThat((product4.getTax()), is(1.60));
+        assertThat((product5.getTax()), is(1.90));
+        assertThat((product6.getTax()), is(0.65));
     }
 
     @Test
     public void testGetTaxRate() throws Exception {
-        assertThat((book.getTaxRate()), is(0.00));
-        assertThat((musicCD.getTaxRate()), is(0.10));
-        assertThat((importedPerfum.getTaxRate()),is(0.125));
-        assertThat(importedChocolate.getTaxRate(),is(0.025));
+        assertThat(product1.getTaxRate(), is(0.00));
+        assertThat(product2.getTaxRate(), is(0.025));
+        assertThat(product3.getTaxRate(), is(0.10));
+        assertThat(product4.getTaxRate(), is(0.125));
+        assertThat(product5.getTaxRate(), is(0.15));
+        assertThat(product6.getTaxRate(), is(0.05));
     }
 
     @After
     public void tearDown(){
-
     }
-
-
 }

@@ -1,7 +1,5 @@
 package com.homework.shoppingCart;
 
-import com.homework.shoppingCart.CartItem;
-import com.homework.shoppingCart.Product;
 import com.homework.shoppingCart.helper.MoneyHelper;
 
 import java.math.BigDecimal;

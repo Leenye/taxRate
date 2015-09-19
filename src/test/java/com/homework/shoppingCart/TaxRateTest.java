@@ -19,12 +19,12 @@ public class TaxRateTest extends TestCase {
 
     @Before
     public void setUp(){
-        product1 = new Product("book",12.49,"Date: Wen. 2015-9-18");
-        product2 = new Product("imported book",12.49,"Date: Wen. 2015-9-18");
-        product3 = new Product("perfume",12.49,"Date: Wen. 2015-9-18");
-        product4 = new Product("imported perfume",12.49,"Date: Wen. 2015-9-18");
-        product5 = new Product("imported perfume",12.49,"Date: Tue. 2015-9-18");
-        product6 = new Product("imported book",12.49,"Date: Thu. 2015-9-18");
+        product1 = new Product("book",12.49,"Date: Wen. 2015-9-18",false,true);
+        product2 = new Product("imported book",12.49,"Date: Wen. 2015-9-18",true,true);
+        product3 = new Product("perfume",12.49,"Date: Wen. 2015-9-18",false,false);
+        product4 = new Product("imported perfume",12.49,"Date: Wen. 2015-9-18",true,false);
+        product5 = new Product("imported perfume",12.49,"Date: Tue. 2015-9-18",true,false);
+        product6 = new Product("imported book",12.49,"Date: Thu. 2015-9-18",true,true);
     }
 
 

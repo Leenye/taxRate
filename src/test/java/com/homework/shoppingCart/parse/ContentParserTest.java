@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class ContentParserTest extends TestCase {
@@ -35,5 +34,7 @@ public class ContentParserTest extends TestCase {
         assertThat(carts.size(),is(1));
         assertThat(carts.get(0).getDate(), is("Date: Mon. 2015-9-7"));
         assertThat (carts.get(0).getCartItemList().get(0).getProduct().getName(),is(product.getName()));
+        assertThat (carts.get(0).getCartItemList().get(0).getProduct().isBasicExempt(),is(true));
+        assertThat (carts.get(0).getCartItemList().get(0).getProduct().isImported(),is(false));
     }
 }

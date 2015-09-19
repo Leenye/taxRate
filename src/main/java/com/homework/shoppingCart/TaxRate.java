@@ -1,5 +1,6 @@
 package com.homework.shoppingCart;
 
+import java.math.BigDecimal;
 import java.util.stream.Stream;
 
 public enum TaxRate {
@@ -27,7 +28,7 @@ public enum TaxRate {
             taxRate += importedTaxRateAddition;
         }
         importedTaxRateAddition = 0.05;
-        return taxRate;
+        return new BigDecimal(taxRate).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue() ;
     }
 
     private static boolean isHalfTaxOff(String time){

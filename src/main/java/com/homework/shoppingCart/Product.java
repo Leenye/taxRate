@@ -21,6 +21,13 @@ public class Product {
         this.date = date;
     }
 
+    public Product(String name, double price, String date, boolean isImported, boolean isBasicExempt) {
+        this.name = name;
+        this.price = price;
+        this.date = date;
+        this.isImported = isImported;
+        this.isBasicExempt = isBasicExempt;
+    }
 
     public boolean isBasicExempt() {
         return isBasicExempt;

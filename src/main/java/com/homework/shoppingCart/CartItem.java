@@ -1,9 +1,5 @@
 package com.homework.shoppingCart;
 
-import com.homework.shoppingCart.Product;
-
-import java.util.Map;
-
 public class CartItem {
     private Product product;
     private int num;

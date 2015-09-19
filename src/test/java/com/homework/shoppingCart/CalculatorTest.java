@@ -15,52 +15,40 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by twer on 9/11/15.
- */
-public class CalculatorTest extends TestCase {
+public class CalculatorTest {
     private Calculator calculator;
-    Product book;
-    Product musicCD;
-    Product importedPerfum;
-    Product importedChocolate;
+    Product product1;
+    Product product2;
+    Cart cart;
     CartItem cartItem1;
     CartItem cartItem2;
-    Cart cart;
-    List<CartItem> cartItemList;
 
     @Before
     public void setUp(){
         calculator = new Calculator();
-        book = new Product("book",12.49);
-        musicCD = new Product("music CD",14.99);
-        importedPerfum = new Product("imported perfum",27.99);
-        importedChocolate = new Product("imported chocolate",10.00);
-        cartItem1 = new CartItem(book,1);
-        cartItem2 = new CartItem(musicCD,1);
-        cartItemList = new ArrayList<CartItem>();
-        cartItemList.add(cartItem1);
-        cartItemList.add(cartItem2);
+        product1 = new Product("book",12.49,"Date: Wen. 2015-9-18",false,true);
+        product2 = new Product("imported book",12.49,"Date: Wen. 2015-9-18",true,true);
+        cartItem1 = new CartItem(product1,1);
+        cartItem2 = new CartItem(product2,1);
+        cart = new Cart();
+        cart.getCartItemList().add(cartItem1);
+        cart.getCartItemList().add(cartItem2);
     }
 
     @Test
     public void testCalculateTax(){
-        assertThat(calculator.calculateTax(book),is(0.00));
-        assertThat(calculator.calculateTax(musicCD),is(1.50));
-        assertThat(calculator.calculateTax(importedChocolate),is(0.50));
-        assertThat(calculator.calculateTax(importedPerfum),is(4.20));
+        assertThat(Calculator.calculateTax(product1),is(0.00));
+        assertThat(calculator.calculateTax(product2),is(0.35));
     }
 
     @Test
     public void testCalculateTotalCost() throws Exception {
-        assertThat(calculator.calculateTotalCost(cartItemList),is(28.98));
-
-
+        assertThat(calculator.calculateTotalCost(cart.getCartItemList()),is(25.33));
     }
 
     @Test
     public void testCalculateTotalTax() throws Exception {
-        assertThat(calculator.calculateTotalTax(cartItemList),is(1.50));
+        assertThat(calculator.calculateTotalTax(cart.getCartItemList()),is(0.35));
     }
 
     @After
