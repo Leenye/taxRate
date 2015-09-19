@@ -11,7 +11,10 @@ public class App {
         ContentParser paser = new ContentParser();
         List<Cart> carts = paser.parse(filePath);
 
-        for (Cart cart : carts) {
+        System.out.println("OUTPUT");
+        for (Cart cart : carts){
+            int index = carts.indexOf(cart)+1;
+            System.out.println("output"+ index);
             for (CartItem i : cart.getCartItemList()) {
                 System.out.println(i.getNum() + i.getProduct().getName() + ": " + i.getProduct().getCost());
             }

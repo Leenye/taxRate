@@ -24,6 +24,7 @@ public class CartTest extends TestCase {
         cart = new Cart();
         cart.add(cartItem1);
         cart.add(cartItem2);
+        cart.setDate("Mon. 2015-9-18");
     }
 
     @Test
@@ -31,7 +32,14 @@ public class CartTest extends TestCase {
         assertThat(cart.getTotalTaxes(), is(1.50));
     }
 
+    @Test
     public void testCalculteTotalCosts(){
         assertThat(cart.getTotalCosts(),is(28.98));
+    }
+
+    @Test
+    public void testSetProductDate() throws Exception {
+        assertThat(goods1.getDate(),is("Mon. 2015-9-18"));
+
     }
 }

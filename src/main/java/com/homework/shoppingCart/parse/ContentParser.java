@@ -28,7 +28,7 @@ public class ContentParser {
                 cart = new Cart();
                 carts.add(cart);
             } else {
-                if(ContentParseHelper.isDate(line)){
+                if(line.contains("Date")){
                     cart.setDate(line);
                     cart.setProductDate();
                     continue;
@@ -55,7 +55,6 @@ public class ContentParser {
     }
 
     private Product parseProduct(String item) {
-//        Pattern pattern = Pattern.compile("(?<isImported>(imported))+(?<name>(\\s\\w*)+)\\sat\\s(?<price>.*)");
         Pattern pattern = Pattern.compile("(?<name>(\\s\\w*)+)\\sat\\s(?<price>.*)");
 
         Matcher matcher = pattern.matcher(item);

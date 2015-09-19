@@ -9,12 +9,18 @@ public class Product {
     private boolean isImported;
     private boolean isBasicExempt;
     private String date;
-//    private TaxRate taxRate;
 
     public Product(String name, double price) {
         this.name = name;
         this.price = price;
     }
+
+    public Product(String name, double price,String date) {
+        this.name = name;
+        this.price = price;
+        this.date = date;
+    }
+
 
     public boolean isBasicExempt() {
         return isBasicExempt;

@@ -31,9 +31,9 @@ public enum TaxRate {
     }
 
     private static boolean isHalfTaxOff(String time){
-        Stream<String> datesOff = Stream.of("Mon.", "Wen.", "Fri");
         String[] dates = {"Mon.","Tue.","Wen.","Thu.","Fri.","Sat.","Sun."};
         String date = Stream.of(dates).filter(i -> time.contains(i)).findFirst().get();
+        Stream<String> datesOff = Stream.of("Mon.", "Wen.", "Fri");
         if(datesOff.anyMatch(i->i.equals(date))){
             return true;
         }
