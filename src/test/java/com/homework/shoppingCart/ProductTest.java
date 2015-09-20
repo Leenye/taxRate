@@ -21,12 +21,12 @@ public class ProductTest {
 
     @Before
     public void setUp(){
-        product1 = new Product("book",12.49,"Date: Wen. 2015-9-18",false,true);
-        product2 = new Product("imported book",12.49,"Date: Wen. 2015-9-18",true,true);
-        product3 = new Product("perfume",12.49,"Date: Wen. 2015-9-18",false,false);
-        product4 = new Product("imported perfume",12.49,"Date: Wen. 2015-9-18",true,false);
-        product5 = new Product("imported perfume",12.49,"Date: Tue. 2015-9-18",true,false);
-        product6 = new Product("imported book",12.49,"Date: Thu. 2015-9-18",true,true);
+        product1 = new Product("book",12.49,"Date: 2015-9-16  Wed",false,true);
+        product2 = new Product("imported book",12.49,"Date: 2015-9-16 Wed",true,true);
+        product3 = new Product("perfume",12.49,"Date: 2015-9-16 Wed",false,false);
+        product4 = new Product("imported perfume",12.49,"Date: 2015-9-16 Wed",true,false);
+        product5 = new Product("imported perfume",12.49,"Date: 2015-9-15 Tue",true,false);
+        product6 = new Product("imported book",12.49,"Date: 2015-9-17 Thu",true,true);
     }
 
     @Test

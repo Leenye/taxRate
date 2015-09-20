@@ -20,11 +20,12 @@ public class ContentParserTest extends TestCase {
     ContentParser contentParser;
     Product product;
     CartItem cartItem;
+    String date= "Date: 2015-09-17";
 
     @Before
     public void setUp(){
         contentParser = new ContentParser();
-        product = new Product(" book", 12.49, "Date: Mon. 2015-9-7");
+        product = new Product(" book", 12.49, "Date: 2015-9-7 Mon");
         cartItem = new CartItem(product,1);
     }
 
@@ -32,9 +33,20 @@ public class ContentParserTest extends TestCase {
     public void testParse() throws Exception {
         List<Cart> carts = contentParser.parse(filePath);
         assertThat(carts.size(),is(1));
-        assertThat(carts.get(0).getDate(), is("Date: Mon. 2015-9-7"));
+        assertThat(carts.get(0).getDate(), is("Date: 2015-9-7 Mon"));
         assertThat (carts.get(0).getCartItemList().get(0).getProduct().getName(),is(product.getName()));
         assertThat (carts.get(0).getCartItemList().get(0).getProduct().isBasicExempt(),is(true));
         assertThat (carts.get(0).getCartItemList().get(0).getProduct().isImported(),is(false));
     }
+
+    public void testPreProcessDate() throws Exception {
+        assertThat(contentParser.preProcessDate(date),is("2015-09-17"));
+
+    }
+
+    public void testParseWeekday() throws Exception {
+        assertThat(contentParser.parseWeekday(contentParser.preProcessDate(date)),is("Thu"));
+    }
+
+
 }

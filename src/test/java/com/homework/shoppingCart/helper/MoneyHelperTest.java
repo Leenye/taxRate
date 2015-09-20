@@ -11,7 +11,6 @@ public class MoneyHelperTest {
 
     @Test
     public void testRound() throws Exception {
-        double value1 = 12.64;
         assertThat(MoneyHelper.round(value1),is(12.65));
         assertThat(MoneyHelper.round(value2),is(12.80));
     }

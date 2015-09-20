@@ -24,8 +24,8 @@ public class CalculatorTest {
 
     @Before
     public void setUp(){
-        product1 = new Product("book",12.49,"Date: Wen. 2015-9-18",false,true);
-        product2 = new Product("imported book",12.49,"Date: Wen. 2015-9-18",true,true);
+        product1 = new Product("book",12.49,"Date: 2015-9-16 Wed",false,true);
+        product2 = new Product("imported book",12.49,"Date: 2015-9-16 Wed",true,true);
         cartItem1 = new CartItem(product1,1);
         cartItem2 = new CartItem(product2,1);
         cart = new Cart();

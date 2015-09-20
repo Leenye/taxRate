@@ -10,13 +10,4 @@ public class ContentParseHelper {
         }
         return false;
     }
-
-    public static boolean isDate(String input){
-        Pattern pattern = Pattern.compile("(?<time>[\\w]{3}\\.)\\s(\\d+-)+");
-        Matcher matcher = pattern.matcher(input);
-        if(matcher.find()){
-            return true;
-        }
-        return false;
-    }
 }
