@@ -25,6 +25,4 @@ public class Calculator {
         }
         return new BigDecimal(totalTaxes).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
     }
-
-
 }

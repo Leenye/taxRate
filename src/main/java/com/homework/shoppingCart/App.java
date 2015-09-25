@@ -13,13 +13,14 @@ public class App {
         System.out.println("OUTPUT");
         for (Cart cart : carts){
             int index = carts.indexOf(cart)+1;
-            System.out.println("output"+ index);
+            System.out.println("output" + index);
             System.out.println(cart.getDate());
             for (CartItem i : cart.getCartItemList()) {
                 System.out.println(i.getNum() + i.getProduct().getName() + ": " + i.getProduct().getCost());
             }
             System.out.format("sales Taxes: %.2f%n", cart.getTotalTaxes());
             System.out.format("Total: %.2f%n", cart.getTotalCosts());
+            System.out.println("abc".concat("property"));
         }
     }
 }
