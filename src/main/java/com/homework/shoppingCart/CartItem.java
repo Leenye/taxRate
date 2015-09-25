@@ -3,6 +3,8 @@ package com.homework.shoppingCart;
 public class CartItem {
     private Product product;
     private int num;
+    private double itemSaved;
+    private double itemTax;
 
     public Product getProduct() {
         return product;
@@ -23,6 +25,22 @@ public class CartItem {
     public CartItem(Product product,int num){
         this.product = product;
         this.num = num;
+    }
+
+    public double getItemSaved() {
+        return itemSaved;
+    }
+
+    public void setItemSaved(double itemSaved) {
+        this.itemSaved = Calculator.calculateTotalSaved(this);
+    }
+
+    public double getItemTax() {
+        return this.getProduct().getTax()*this.getNum();
+    }
+
+    public void setItemTax(double itemTax) {
+        this.itemTax = itemTax;
     }
 
     public CartItem() {

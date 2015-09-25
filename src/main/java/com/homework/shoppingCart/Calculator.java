@@ -6,8 +6,14 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class Calculator {
+    public static double calculateTotalSaved(CartItem cartItem){
+        double totalSaved = 0;
+        totalSaved = (cartItem.getProduct().getSoldPrice() - cartItem.getProduct().getSoldPrice()) * cartItem.getNum();
+        return totalSaved;
+    }
+
     public static double calculateTax(Product product){
-        return MoneyHelper.round(product.getPrice() * product.getTaxRate());
+        return MoneyHelper.round(product.getSoldPrice() * product.getTaxRate());
     }
 
     public static double calculateTotalCost(List<CartItem> cartItems){

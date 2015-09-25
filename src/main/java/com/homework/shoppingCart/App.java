@@ -17,10 +17,11 @@ public class App {
             System.out.println(cart.getDate());
             for (CartItem i : cart.getCartItemList()) {
                 System.out.println(i.getNum() + i.getProduct().getName() + ": " + i.getProduct().getCost());
+                System.out.println("discout is" + i.getItemSaved());
+                System.out.println("item tax is" + i.getItemTax());
             }
             System.out.format("sales Taxes: %.2f%n", cart.getTotalTaxes());
             System.out.format("Total: %.2f%n", cart.getTotalCosts());
-            System.out.println("abc".concat("property"));
         }
     }
 }

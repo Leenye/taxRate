@@ -21,6 +21,7 @@ public class ContentParser {
 
         ArrayList<Cart> carts = new ArrayList<Cart>();
         String parsedDate = null;
+        String parsedStore = null;
         Cart cart = null;
         for (String line : contents) {
             if (line.equals("INPUT")) {
@@ -30,13 +31,19 @@ public class ContentParser {
                 parsedDate =line +" "+ parseWeekday(preProcessDate(line));
                 continue;
             }
+            if(line.contains("Store")){
+                parsedStore = parseStore(line);
+                continue;
+            }
             if (line.contains("Input")) {
                 cart = new Cart();
                 cart.setDate(parsedDate);
+                cart.setStore(parsedStore);
                 carts.add(cart);
             } else {
                 cart.add(parseItem(line));
                 cart.setProductDate();
+                cart.setProductStore();
             }
         }
         return carts;
@@ -68,13 +75,37 @@ public class ContentParser {
             if (name.contains("imported")) {
                 product.setIsImported(true);
             }
-            if (ContentParseHelper.isBasicExempt(name)) {
+            if (isBasicExempt(name)) {
                 product.setIsBasicExempt(true);
             }
             return product;
         } else {
             throw new IllegalArgumentException("Illegal item input");
         }
+    }
+
+
+
+    public  String parseWeekday(String date){
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("E");
+        Date d = null;
+        try {
+            d = simpleDate.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateFormat.format(d);
+    }
+
+    private  String parseStore(String inputStore){
+        String store = null;
+        Pattern pattern = Pattern.compile("^Store:\\s(?<store>(\\w)+)");
+        Matcher matcher = pattern.matcher(inputStore);
+        if (matcher.find()){
+            store = matcher.group("store");
+        }
+        return store;
     }
 
     public String preProcessDate(String inputDate){
@@ -87,16 +118,11 @@ public class ContentParser {
         return date;
     }
 
-    public  String parseWeekday(String date){
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("E");
-        Date d = null;
-        try {
-            d = simpleDate.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public boolean isBasicExempt(String productName){
+        if(productName.contains("book") || productName.contains("chocolate") || productName.contains("pills")){
+            return true;
         }
-        return dateFormat.format(d);
+        return false;
     }
 
 }

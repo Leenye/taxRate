@@ -17,7 +17,7 @@ public enum TaxRate {
     }
 
     public static double calculateTaxRate(Product product){
-        if(isHalfTaxOff(product.getDate())){
+        if(isHalfImportedTaxOff(product.getDate())){
             importedTaxRateAddition = importedTaxRateOff*importedTaxRateAddition;
         }
         double taxRate = TaxRate.BASIC_RATE.getTaxRate();
@@ -31,11 +31,11 @@ public enum TaxRate {
         return new BigDecimal(taxRate).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue() ;
     }
 
-    private static boolean isHalfTaxOff(String time){
+    private static boolean isHalfImportedTaxOff(String time){
         String[] dates = {"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};
         String date = Stream.of(dates).filter(i -> time.contains(i)).findFirst().get();
         Stream<String> datesOff = Stream.of("Mon", "Wed", "Fri");
-        if(datesOff.anyMatch(i->i.equals(date))){
+        if(datesOff.anyMatch(i -> i.equals(date))){
             return true;
         }
         return false;

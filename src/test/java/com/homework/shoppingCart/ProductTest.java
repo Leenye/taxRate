@@ -18,6 +18,7 @@ public class ProductTest {
     Product product4;
     Product product5;
     Product product6;
+    Product product7;
 
     @Before
     public void setUp(){
@@ -27,6 +28,8 @@ public class ProductTest {
         product4 = new Product("imported perfume",12.49,"Date: 2015-9-16 Wed",true,false);
         product5 = new Product("imported perfume",12.49,"Date: 2015-9-15 Tue",true,false);
         product6 = new Product("imported book",12.49,"Date: 2015-9-17 Thu",true,true);
+
+        product7 = new Product("book",12.49,"Date: 2015-9-1 Tue",false,true);
     }
 
     @Test
@@ -50,13 +53,29 @@ public class ProductTest {
     }
 
     @Test
+    public void testGetImportedTax(){
+
+    }
+
+    @Test
     public void testGetTaxRate() throws Exception {
         assertThat(product1.getTaxRate(), is(0.00));
-        assertThat(product2.getTaxRate(), is(0.025));
         assertThat(product3.getTaxRate(), is(0.10));
+    }
+
+    @Test
+    public void testGetImportedTaxRate() throws Exception {
+        assertThat(product2.getTaxRate(), is(0.025));
         assertThat(product4.getTaxRate(), is(0.125));
         assertThat(product5.getTaxRate(), is(0.15));
         assertThat(product6.getTaxRate(), is(0.05));
+
+    }
+
+    @Test
+    public void testGetSoldPrice() throws Exception {
+        assertThat(product7.getSoldPrice(),is(6.25));
+
     }
 
     @After

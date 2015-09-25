@@ -1,14 +1,17 @@
 INPUT
-Date: 2015-9-7
+Date: 2015-9-1
+Store: A
 Input 1:
-1 book at 12.49
+2 book at 12.49
 1 music CD at 14.99
-1 chocolate bar at 0.85
+2 chocolate bar at 0.85
 Date: 2015-9-8
+Store: B
 Input 2:
-1 imported box of chocolates at 10.00
+2 imported box of chocolates at 10.00
 1 imported bottle of perfume at 47.50
 Date: 2015-9-9
+Store: A
 Input 3:
 1 imported bottle of perfume at 27.99
 1 bottle of perfume at 18.99

@@ -26,17 +26,20 @@ public class ContentParserTest extends TestCase {
     public void setUp(){
         contentParser = new ContentParser();
         product = new Product(" book", 12.49, "Date: 2015-9-7 Mon");
+        product.setStore("A");
         cartItem = new CartItem(product,1);
     }
 
     @Test
     public void testParse() throws Exception {
         List<Cart> carts = contentParser.parse(filePath);
+        Product parsedProduct = carts.get(0).getCartItemList().get(0).getProduct();
         assertThat(carts.size(),is(1));
         assertThat(carts.get(0).getDate(), is("Date: 2015-9-7 Mon"));
-        assertThat (carts.get(0).getCartItemList().get(0).getProduct().getName(),is(product.getName()));
-        assertThat (carts.get(0).getCartItemList().get(0).getProduct().isBasicExempt(),is(true));
-        assertThat (carts.get(0).getCartItemList().get(0).getProduct().isImported(),is(false));
+        assertThat (parsedProduct.getName(),is(product.getName()));
+        assertThat (parsedProduct.isBasicExempt(),is(true));
+        assertThat (parsedProduct.isImported(),is(false));
+        assertThat(parsedProduct.getStore(),is("A"));
     }
 
     public void testPreProcessDate() throws Exception {
@@ -45,8 +48,13 @@ public class ContentParserTest extends TestCase {
     }
 
     public void testParseWeekday() throws Exception {
-        assertThat(contentParser.parseWeekday(contentParser.preProcessDate(date)),is("Thu"));
+        assertThat(contentParser.parseWeekday(contentParser.preProcessDate(date)), is("Thu"));
     }
 
 
+    @Test
+    public void testIsBasicExempt() throws Exception {
+        assertThat(contentParser.isBasicExempt("imported book"), is(true));
+
+    }
 }

@@ -4,26 +4,29 @@ import java.math.BigDecimal;
 
 public class Product {
     private String name;
-    private double price;
+    private double shelfPrice;
+    private double soldPrice;
     private double cost;
     private boolean isImported;
     private boolean isBasicExempt;
+    private boolean isHalfPriceOff;
     private String date;
+    private String store;
 
-    public Product(String name, double price) {
+    public Product(String name, double shelfPrice) {
         this.name = name;
-        this.price = price;
+        this.shelfPrice = shelfPrice;
     }
 
-    public Product(String name, double price,String date) {
+    public Product(String name, double shelfPrice,String date) {
         this.name = name;
-        this.price = price;
+        this.shelfPrice = shelfPrice;
         this.date = date;
     }
 
-    public Product(String name, double price, String date, boolean isImported, boolean isBasicExempt) {
+    public Product(String name, double shelfPrice, String date, boolean isImported, boolean isBasicExempt) {
         this.name = name;
-        this.price = price;
+        this.shelfPrice = shelfPrice;
         this.date = date;
         this.isImported = isImported;
         this.isBasicExempt = isBasicExempt;
@@ -57,20 +60,28 @@ public class Product {
         return name;
     }
 
-    public double getPrice() {
-        return price;
+    public double getShelfPrice() {
+        return shelfPrice;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setShelfPrice(double shelfPrice) {
+        this.shelfPrice = shelfPrice;
     }
 
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    public String getStore() {
+        return store;
+    }
+
+    public void setStore(String store) {
+        this.store = store;
     }
 
     public double getTaxRate(){
@@ -83,7 +94,30 @@ public class Product {
     }
 
     public double getCost() {
-        cost =new BigDecimal(this.getTax() + price).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+        cost =new BigDecimal(this.getTax() + soldPrice).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
         return this.cost;
+    }
+
+
+    public void setSoldPrice(double soldPrice) {
+        this.soldPrice = soldPrice;
+    }
+
+    public double getSoldPrice() {
+        soldPrice = shelfPrice;
+        if (getIsHalfPriceOff()){
+            soldPrice = shelfPrice*0.5;
+        }
+        return new BigDecimal(soldPrice).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
+    private boolean getIsHalfPriceOff(){
+        boolean flag = false;
+        String dateNum = date.split(" ")[1];
+        String dateForJudge =  dateNum.split("-")[2];
+        if (dateForJudge.equals("1") && name.contains("book")){
+            flag = true;
+        }
+        return flag;
     }
 }
