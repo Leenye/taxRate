@@ -8,7 +8,7 @@ import java.util.List;
 public class Calculator {
     public static double calculateTotalSaved(CartItem cartItem){
         double totalSaved = 0;
-        totalSaved = (cartItem.getProduct().getSoldPrice() - cartItem.getProduct().getSoldPrice()) * cartItem.getNum();
+        totalSaved = (cartItem.getProduct().getShelfPrice() - cartItem.getProduct().getSoldPrice()) * cartItem.getNum();
         return totalSaved;
     }
 

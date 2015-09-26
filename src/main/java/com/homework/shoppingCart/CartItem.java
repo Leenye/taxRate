@@ -28,7 +28,7 @@ public class CartItem {
     }
 
     public double getItemSaved() {
-        return itemSaved;
+        return Calculator.calculateTotalSaved(this);
     }
 
     public void setItemSaved(double itemSaved) {
