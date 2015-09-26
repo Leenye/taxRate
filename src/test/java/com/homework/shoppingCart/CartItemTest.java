@@ -23,12 +23,11 @@ public class CartItemTest extends TestCase {
     }
 
     @Test
-    public void testGetItemSaved() throws Exception {
+    public void testGetItemSavedNotFirstDay() throws Exception {
         assertThat(cartItem.getItemSaved(), is(0.00));
     }
 
     public void testBooksHalfPriceSavedOnTheFirstDayOfMonth() throws Exception {
         assertThat(cartItemOnFisrtDay.getItemSaved(), is(12.48));
     }
-
 }

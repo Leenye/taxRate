@@ -51,7 +51,6 @@ public class ContentParserTest extends TestCase {
         assertThat(contentParser.parseWeekday(contentParser.preProcessDate(date)), is("Thu"));
     }
 
-
     @Test
     public void testIsBasicExempt() throws Exception {
         assertThat(contentParser.isBasicExempt("imported book"), is(true));

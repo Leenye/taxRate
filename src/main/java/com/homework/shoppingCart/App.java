@@ -10,18 +10,12 @@ public class App {
         ContentParser paser = new ContentParser();
         List<Cart> carts = paser.parse(filePath);
 
+        Receipt receipt = new Receipt();
+
         System.out.println("OUTPUT");
         for (Cart cart : carts){
             int index = carts.indexOf(cart)+1;
-            System.out.println("output" + index);
-            System.out.println(cart.getDate());
-            for (CartItem i : cart.getCartItemList()) {
-                System.out.println(i.getNum() + i.getProduct().getName() + ": " + i.getProduct().getCost());
-                System.out.println("discout is" + i.getItemSaved());
-                System.out.println("item tax is" + i.getItemTax());
-            }
-            System.out.format("sales Taxes: %.2f%n", cart.getTotalTaxes());
-            System.out.format("Total: %.2f%n", cart.getTotalCosts());
+            receipt.printOutReceipt(cart);
         }
     }
 }

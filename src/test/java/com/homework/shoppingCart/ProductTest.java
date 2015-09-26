@@ -8,9 +8,6 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * Created by twer on 9/11/15.
- */
 public class ProductTest {
     Product product1;
     Product product2;

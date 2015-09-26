@@ -5,6 +5,7 @@ public class CartItem {
     private int num;
     private double itemSaved;
     private double itemTax;
+    private double itemCost;
 
     public Product getProduct() {
         return product;
@@ -44,5 +45,13 @@ public class CartItem {
     }
 
     public CartItem() {
+    }
+
+    public double getItemCost() {
+        return this.getProduct().getCost()*this.getNum();
+    }
+
+    public void setItemCost(double itemCost) {
+        this.itemCost = itemCost;
     }
 }
