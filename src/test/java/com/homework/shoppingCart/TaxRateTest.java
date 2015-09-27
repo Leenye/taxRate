@@ -26,12 +26,20 @@ public class TaxRateTest {
     }
 
     @Test
-    public void testCalculateTaxRate() throws Exception {
+    public void testBasicTaxRateWithoutImporting(){
         assertThat(TaxRate.calculateTaxRate(product1),is(0.00));
-        assertThat(TaxRate.calculateTaxRate(product2),is(0.025));
         assertThat(TaxRate.calculateTaxRate(product3),is(0.10));
-        assertThat(TaxRate.calculateTaxRate(product4),is(0.125));
-        assertThat(TaxRate.calculateTaxRate(product5),is(0.15));
+    }
+
+    @Test
+    public void testCalculateOrdinaryImportedTaxRate(){
         assertThat(TaxRate.calculateTaxRate(product6),is(0.05));
+        assertThat(TaxRate.calculateTaxRate(product5),is(0.15));
+    }
+
+    @Test
+    public void testCalculateImportedTaxRateWithDiscount(){
+        assertThat(TaxRate.calculateTaxRate(product2),is(0.025));
+        assertThat(TaxRate.calculateTaxRate(product4),is(0.125));
     }
 }

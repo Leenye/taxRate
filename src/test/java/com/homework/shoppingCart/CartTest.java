@@ -27,17 +27,17 @@ public class CartTest {
     }
 
     @Test
-    public void testCalculateTotalTaxes(){
+    public void testCalculateTotalTaxesInOneCart(){
         assertThat(cart.getTotalTaxes(), is(0.35));
     }
 
     @Test
-    public void testCalculteTotalCosts(){
+    public void testCalculteTotalCostsInOneCart(){
         assertThat(cart.getTotalCosts(),is(25.33));
     }
 
     @Test
-    public void testSetProductDate() throws Exception {
+    public void testSetProductDateForProductsInOneCart() throws Exception {
         assertThat(product1.getDate(),is("Date: 2015-9-16 Wed"));
     }
 }

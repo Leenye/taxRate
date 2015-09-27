@@ -115,7 +115,7 @@ public class Product {
         boolean flag = false;
         String dateNum = date.split(" ")[1];
         String dateForJudge =  dateNum.split("-")[2];
-        if (dateForJudge.equals("1") && name.contains("book")){
+        if (dateForJudge.equals("1") && name.contains("book") && store.equals("A")){
             flag = true;
         }
         return flag;

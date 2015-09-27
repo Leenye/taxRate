@@ -18,16 +18,17 @@ public class CartItemTest extends TestCase {
     public void setUp(){
         book = new Product("book",12.49,"Date: 2015-9-16  Wed");
         bookSoldOnFisrtDay = new Product("book",12.49,"Date: 2015-9-1  Tue");
+        bookSoldOnFisrtDay.setStore("A");
         cartItem = new CartItem(book,2);
         cartItemOnFisrtDay = new CartItem(bookSoldOnFisrtDay, 2);
     }
 
     @Test
-    public void testGetItemSavedNotFirstDay() throws Exception {
+    public void testGetItemSavedNotOnFirstMonthDate() throws Exception {
         assertThat(cartItem.getItemSaved(), is(0.00));
     }
 
-    public void testBooksHalfPriceSavedOnTheFirstDayOfMonth() throws Exception {
+    public void testBooksHalfPriceSavedOnTheFirstMonthDate() throws Exception {
         assertThat(cartItemOnFisrtDay.getItemSaved(), is(12.48));
     }
 }
