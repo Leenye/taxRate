@@ -1,17 +1,26 @@
-package com.homework.shoppingCart;
+package com.homework.shoppingCart.product;
+
+import com.homework.shoppingCart.Calculator;
+import com.homework.shoppingCart.TaxRate;
+import com.homework.shoppingCart.promotion.PromotionImpl;
 
 import java.math.BigDecimal;
 
 public class Product {
-    private String name;
-    private double shelfPrice;
-    private double soldPrice;
-    private double cost;
-    private boolean isImported;
-    private boolean isBasicExempt;
-    private boolean isHalfPriceOff;
-    private String date;
-    private String store;
+    protected String name;
+    protected String date;
+    protected String store;
+    protected double shelfPrice;
+    protected double soldPrice;
+    protected boolean isImported;
+    protected boolean isBasicExempt;
+    protected TaxRate taxRate;
+    protected double tax;
+    protected double cost;
+    protected double discount;
+
+    public Product(){
+    }
 
     public Product(String name, double shelfPrice) {
         this.name = name;
@@ -84,8 +93,17 @@ public class Product {
         this.store = store;
     }
 
+    public void setTaxRate(TaxRate taxRate) {
+        this.taxRate = taxRate;
+    }
+
+
     public double getTaxRate(){
       return  TaxRate.calculateTaxRate(this);
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
     }
 
     public double getTax(){
@@ -104,20 +122,33 @@ public class Product {
     }
 
     public double getSoldPrice() {
-        soldPrice = shelfPrice;
-        if (getIsHalfPriceOff()){
-            soldPrice = shelfPrice*0.5;
-        }
-        return new BigDecimal(soldPrice).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        return soldPrice;
     }
 
-    private boolean getIsHalfPriceOff(){
-        boolean flag = false;
-        String dateNum = date.split(" ")[1];
-        String dateForJudge =  dateNum.split("-")[2];
-        if (dateForJudge.equals("1") && name.contains("book") && store.equals("A")){
-            flag = true;
-        }
-        return flag;
+    public double getDiscount() {
+        return discount;
     }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    //    public double getSoldPrice() {
+//        soldPrice = shelfPrice;
+//        if (getIsHalfPriceOff()){
+//            soldPrice = shelfPrice*0.5;
+//        }
+//        return new BigDecimal(soldPrice).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+//    }
+
+
+//    private boolean getIsHalfPriceOff(){
+//        boolean flag = false;
+//        String dateNum = date.split(" ")[1];
+//        String dateForJudge =  dateNum.split("-")[2];
+//        if (dateForJudge.equals("1") && name.contains("book") && store.equals("A")){
+//            flag = true;
+//        }
+//        return flag;
+//    }
 }

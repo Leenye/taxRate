@@ -1,5 +1,6 @@
 package com.homework.shoppingCart;
 
+import com.homework.shoppingCart.product.Product;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,12 +29,12 @@ public class CartTest {
 
     @Test
     public void testCalculateTotalTaxesInOneCart(){
-        assertThat(cart.getTotalTaxes(), is(0.35));
+        assertThat(cart.getCartTaxes(), is(0.35));
     }
 
     @Test
     public void testCalculteTotalCostsInOneCart(){
-        assertThat(cart.getTotalCosts(),is(25.33));
+        assertThat(cart.getCartCosts(),is(25.33));
     }
 
     @Test

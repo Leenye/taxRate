@@ -1,6 +1,6 @@
 package com.homework.shoppingCart;
 
-import junit.framework.TestCase;
+import com.homework.shoppingCart.product.Product;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

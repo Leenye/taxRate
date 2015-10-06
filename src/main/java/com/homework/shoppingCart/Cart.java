@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-    private double totalCosts;
-    private double totalTaxes;
+    private double cartCosts;
+    private double cartTaxes;
     private String date;
     private  String store;
     private List<CartItem> cartItemList = new ArrayList<CartItem>();
@@ -26,11 +26,11 @@ public class Cart {
         this.cartItemList = cartItemList;
     }
 
-    public double getTotalCosts() {
+    public double getCartCosts() {
         return Calculator.calculateTotalCost(cartItemList);
     }
 
-    public double getTotalTaxes() {
+    public double getCartTaxes() {
         return Calculator.calculateTotalTax(cartItemList);
     }
 

@@ -1,5 +1,6 @@
 package com.homework.shoppingCart;
 
+import com.homework.shoppingCart.product.Product;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +26,10 @@ public class CartItemTest extends TestCase {
 
     @Test
     public void testGetItemSavedNotOnFirstMonthDate() throws Exception {
-        assertThat(cartItem.getItemSaved(), is(0.00));
+        assertThat(cartItem.getItemDiscount(), is(0.00));
     }
 
     public void testBooksHalfPriceSavedOnTheFirstMonthDate() throws Exception {
-        assertThat(cartItemOnFisrtDay.getItemSaved(), is(12.48));
+        assertThat(cartItemOnFisrtDay.getItemDiscount(), is(12.48));
     }
 }

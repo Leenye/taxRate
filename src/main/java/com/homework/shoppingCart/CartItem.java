@@ -1,9 +1,11 @@
 package com.homework.shoppingCart;
 
+import com.homework.shoppingCart.product.Product;
+
 public class CartItem {
     private Product product;
     private int num;
-    private double itemSaved;
+    private double itemDiscount;
     private double itemTax;
     private double itemCost;
 
@@ -28,12 +30,12 @@ public class CartItem {
         this.num = num;
     }
 
-    public double getItemSaved() {
-        return Calculator.calculateTotalSaved(this);
+    public double getItemDiscount() {
+        return Calculator.calculateTotalDiscounts(this);
     }
 
-    public void setItemSaved(double itemSaved) {
-        this.itemSaved = Calculator.calculateTotalSaved(this);
+    public void setItemDiscount(double itemDiscount) {
+        this.itemDiscount = Calculator.calculateTotalDiscounts(this);
     }
 
     public double getItemTax() {

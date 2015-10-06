@@ -1,12 +1,13 @@
 package com.homework.shoppingCart;
 
 import com.homework.shoppingCart.helper.MoneyHelper;
+import com.homework.shoppingCart.product.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public class Calculator {
-    public static double calculateTotalSaved(CartItem cartItem){
+    public static double calculateTotalDiscounts(CartItem cartItem){
         double totalSaved = 0;
         totalSaved = (cartItem.getProduct().getShelfPrice() - cartItem.getProduct().getSoldPrice()) * cartItem.getNum();
         return totalSaved;

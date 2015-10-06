@@ -2,8 +2,7 @@ package com.homework.shoppingCart.parse;
 
 import com.homework.shoppingCart.Cart;
 import com.homework.shoppingCart.CartItem;
-import com.homework.shoppingCart.Product;
-import com.homework.shoppingCart.helper.ContentParseHelper;
+import com.homework.shoppingCart.product.Product;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -124,5 +123,4 @@ public class ContentParser {
         }
         return false;
     }
-
 }

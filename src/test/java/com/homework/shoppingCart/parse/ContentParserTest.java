@@ -2,7 +2,7 @@ package com.homework.shoppingCart.parse;
 
 import com.homework.shoppingCart.Cart;
 import com.homework.shoppingCart.CartItem;
-import com.homework.shoppingCart.Product;
+import com.homework.shoppingCart.product.Product;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
