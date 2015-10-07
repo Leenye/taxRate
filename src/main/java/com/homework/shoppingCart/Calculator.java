@@ -8,9 +8,15 @@ import java.util.List;
 
 public class Calculator {
     public static double calculateTotalDiscounts(CartItem cartItem){
-        double totalSaved = 0;
-        totalSaved = (cartItem.getProduct().getShelfPrice() - cartItem.getProduct().getSoldPrice()) * cartItem.getNum();
-        return totalSaved;
+        double totalDiscount = 0;
+        totalDiscount =  getOneProductDiscount(cartItem.getProduct())* cartItem.getNum();
+        return new BigDecimal(totalDiscount).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
+    private static double getOneProductDiscount(Product product){
+        double oneProductDiscount = (product.getShelfPrice() - product.getSoldPrice()+
+                product.getShelfPrice()*product.getTaxRate().getValue() - product.getSoldPrice()*product.getActualTaxRate().getValue());
+        return oneProductDiscount;
     }
 
     public static double calculateTotalCost(List<CartItem> cartItems){

@@ -38,6 +38,12 @@ public class CartTest {
     }
 
     @Test
+    public void testCalculteTotalDiscountInOneCart(){
+//        assertThat(cart.get(),is(25.33));
+    }
+
+
+    @Test
     public void testSetProductDateForProductsInOneCart() throws Exception {
         assertThat(product1.getDate(),is("Date: 2015-9-16 Wed"));
     }

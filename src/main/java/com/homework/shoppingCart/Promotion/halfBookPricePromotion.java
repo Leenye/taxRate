@@ -6,7 +6,6 @@ public class HalfBookPricePromotion implements Promotion {
     public Product setPromotion(Product product) {
         if (isHalfBookPricePromotion(product)){
             product.setSoldPrice(product.getShelfPrice() * 0.5);
-//            product.setDiscount(product.getDiscount()+product.getShelfPrice()*0.5);
         }
         return product;
     }

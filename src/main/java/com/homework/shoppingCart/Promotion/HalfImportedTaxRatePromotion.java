@@ -9,7 +9,6 @@ public class HalfImportedTaxRatePromotion implements Promotion {
     public Product setPromotion(Product product) {
         if (isHalfImportedTaxRatePromotion(product)){
             product.setActualTaxRate(ActualTaxRateFactory.getActualTaxRate(product));
-//            product.setDiscount(product.getDiscount()+product.getShelfPrice()*0.5);
         }
         return product;
     }

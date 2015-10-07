@@ -35,7 +35,7 @@ public class CartItem {
     }
 
     public void setItemDiscount(double itemDiscount) {
-        this.itemDiscount = Calculator.calculateTotalDiscounts(this);
+        this.itemDiscount = itemDiscount;
     }
 
     public double getItemTax() {
