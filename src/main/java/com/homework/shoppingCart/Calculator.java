@@ -13,10 +13,6 @@ public class Calculator {
         return totalSaved;
     }
 
-    public static double calculateTax(Product product){
-        return MoneyHelper.round(product.getSoldPrice() * product.getTaxRate());
-    }
-
     public static double calculateTotalCost(List<CartItem> cartItems){
         double totalCosts = 0;
         for(CartItem i : cartItems){

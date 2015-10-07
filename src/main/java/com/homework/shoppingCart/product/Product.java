@@ -1,8 +1,9 @@
 package com.homework.shoppingCart.product;
 
-import com.homework.shoppingCart.Calculator;
-import com.homework.shoppingCart.TaxRate;
+import com.homework.shoppingCart.helper.MoneyHelper;
 import com.homework.shoppingCart.promotion.PromotionImpl;
+import com.homework.shoppingCart.taxRate.TaxRate;
+import com.homework.shoppingCart.taxRate.TaxRateFactory;
 
 import java.math.BigDecimal;
 
@@ -14,12 +15,23 @@ public class Product {
     protected double soldPrice;
     protected boolean isImported;
     protected boolean isBasicExempt;
-    protected TaxRate taxRate;
     protected double tax;
     protected double cost;
     protected double discount;
+    private TaxRate taxRate;
+    private TaxRate actualTaxRate = taxRate;
+    private PromotionImpl promotion = new PromotionImpl();
 
     public Product(){
+    }
+// 通过构造函数传入TaxRateFactory.getProductTaxRate()，但是构造函数很多。
+// 如果很多个构造函数都有调用，那要在每个构造函数中都传入静态方法吗？
+    public TaxRate getTaxRate() {
+        return TaxRateFactory.getProductTaxRate(this);
+    }
+
+    public void setTaxRate(TaxRate taxRate) {
+        this.taxRate = taxRate;
     }
 
     public Product(String name, double shelfPrice) {
@@ -39,6 +51,15 @@ public class Product {
         this.date = date;
         this.isImported = isImported;
         this.isBasicExempt = isBasicExempt;
+    }
+
+    public Product(String name, double shelfPrice, String date, boolean isImported, boolean isBasicExempt, String store) {
+        this.name = name;
+        this.shelfPrice = shelfPrice;
+        this.date = date;
+        this.isImported = isImported;
+        this.isBasicExempt = isBasicExempt;
+        this.store = store;
     }
 
     public boolean isBasicExempt() {
@@ -93,27 +114,22 @@ public class Product {
         this.store = store;
     }
 
-    public void setTaxRate(TaxRate taxRate) {
-        this.taxRate = taxRate;
-    }
-
-
-    public double getTaxRate(){
-      return  TaxRate.calculateTaxRate(this);
-    }
-
     public void setTax(double tax) {
         this.tax = tax;
     }
 
-    public double getTax(){
-        double tax = Calculator.calculateTax(this);
-        return new BigDecimal(tax).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+    public double getTax() {
+        tax = getActualTaxRate().getValue()*getSoldPrice();
+        return MoneyHelper.round(tax);
     }
 
-    public double getCost() {
-        cost =new BigDecimal(this.getTax() + soldPrice).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
-        return this.cost;
+    public TaxRate getActualTaxRate() {
+        TaxRate taxRateAfterPromotion = promotion.setPromotion(this).actualTaxRate;
+        return (taxRateAfterPromotion == null ? getTaxRate() : taxRateAfterPromotion);
+    }
+
+    public void setActualTaxRate(TaxRate actualTaxRate) {
+        this.actualTaxRate = actualTaxRate;
     }
 
 
@@ -122,33 +138,22 @@ public class Product {
     }
 
     public double getSoldPrice() {
-        return soldPrice;
+        double priceAfterPromotion = promotion.setPromotion(this).soldPrice;
+        double price = priceAfterPromotion == 0 ? shelfPrice : priceAfterPromotion;
+        return new BigDecimal(price).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
     public double getDiscount() {
-        return discount;
+        return promotion.setPromotion(this).discount;
     }
 
     public void setDiscount(double discount) {
         this.discount = discount;
     }
 
-    //    public double getSoldPrice() {
-//        soldPrice = shelfPrice;
-//        if (getIsHalfPriceOff()){
-//            soldPrice = shelfPrice*0.5;
-//        }
-//        return new BigDecimal(soldPrice).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-//    }
+    public double getCost() {
+        cost =getTax() + getSoldPrice();
+        return new BigDecimal(cost).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
 
-
-//    private boolean getIsHalfPriceOff(){
-//        boolean flag = false;
-//        String dateNum = date.split(" ")[1];
-//        String dateForJudge =  dateNum.split("-")[2];
-//        if (dateForJudge.equals("1") && name.contains("book") && store.equals("A")){
-//            flag = true;
-//        }
-//        return flag;
-//    }
 }

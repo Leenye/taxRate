@@ -1,12 +1,12 @@
 package com.homework.shoppingCart.taxRate;
 
-public class TaxRateNode extends TaxRate {
+public class TaxRateNode implements TaxRate {
     double value;
     public TaxRateNode(double value){
         this.value = value;
     }
 
-    public double getTaxRate(){
+    public double getValue(){
         return value;
     }
 }

@@ -18,10 +18,6 @@ public class App {
             int index = carts.indexOf(cart)+1;
             receipt.printOutReceipt(cart);
         }
-
-        Product product =new Product("imported book",12);
-//        product.getPromotionInfo();
-        System.out.println(product.getCost());
     }
 }
 

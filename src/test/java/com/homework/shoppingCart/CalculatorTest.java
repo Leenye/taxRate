@@ -1,5 +1,8 @@
 package com.homework.shoppingCart;
 
+import com.homework.shoppingCart.Calculator;
+import com.homework.shoppingCart.Cart;
+import com.homework.shoppingCart.CartItem;
 import com.homework.shoppingCart.product.Product;
 import org.junit.After;
 import org.junit.Before;
@@ -24,12 +27,6 @@ public class CalculatorTest {
         cart = new Cart();
         cart.getCartItemList().add(cartItem1);
         cart.getCartItemList().add(cartItem2);
-    }
-
-    @Test
-    public void testCalculateTax(){
-        assertThat(Calculator.calculateTax(product1),is(0.00));
-        assertThat(Calculator.calculateTax(product2),is(0.35));
     }
 
     @Test
